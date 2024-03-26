@@ -5,7 +5,7 @@ import Loader from "./Loader/Loader";
 import Navigation from "./Navigation/Navigation";
 
 const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
-const HomePage = lazy(() => import("../pages/HomePages/HomePages"));
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const MovieDetailsPage = lazy(() =>
   import("../pages/MovieDetailsPage/MovieDetailsPage")
 );

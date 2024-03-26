@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { fetchTrending } from "../../components/services/tmdb-api";
 
-import css from "./HomePages.module.css";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);

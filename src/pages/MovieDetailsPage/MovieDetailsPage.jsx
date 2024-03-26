@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import BackLink from "../../components/BackLink/BackLink";
 import { fetchMovieDetails } from "../../components/services/tmdb-api";
@@ -17,8 +17,7 @@ const buildLinkClass = ({ isActive }) => {
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from.pathname ?? "/movies";
-  //const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkRef = useRef(location.state?.from ?? "/movies");
   const [movie, setMovie] = useState(null);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(null);
@@ -57,7 +56,7 @@ export default function MovieDetailsPage() {
   return (
     <section>
       <div className={css.container}>
-        <BackLink to={backLinkHref}>Back</BackLink>
+        <BackLink to={backLinkRef.current.pathname}>Back</BackLink>
         {loader && <Loader />}
         {error && <ErrorMessage message={error} />}
         {movie && (
